@@ -90,7 +90,7 @@
             
             if(localStorage.getItem("localEmail")===email.value &&
                 localStorage.getItem("localName")===userName.value && 
-                localStorage.getItem("localPass")===pass.value){
+                localStorage.getItem("localPass")===pass.value && email.value && userName.value && pass.value){
                 
                 alert("Successful✅✅✅")
                 window.location.href="main.html"

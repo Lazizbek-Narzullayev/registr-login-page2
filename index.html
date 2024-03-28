@@ -83,7 +83,7 @@
         })
         RegForm.addEventListener("submit", function(e){
             e.preventDefault();
-            if(localStorage.getItem("localEmail")!==email.value || localStorage.getItem("localName")!==name.value&&email.value&&name.value&&pass.value){
+            if(localStorage.getItem("localEmail")!==email.value || localStorage.getItem("localName")!==userName.value && email.value && userName.value && pass.value){
                 localStorage.setItem("localEmail",email.value)
                 localStorage.setItem("localName",userName.value)
                 localStorage.setItem("localPass",pass.value)
