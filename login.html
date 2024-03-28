@@ -83,6 +83,13 @@
             else{
                 errPass[i].style.display="none"
             }
+            document.addEventListener("click",function(e){
+            if(!LoginForm.contains(e.target)){
+                errPass[i].style.display="none"
+                errName[i].style.display="none"
+                errEmail[i].style.display="none"
+            }
+        })
         })
     }
         LoginForm.addEventListener("submit",function(e){

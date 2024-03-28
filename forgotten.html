@@ -79,6 +79,13 @@
             else{
                 errPass[i].style.display="none"
             }
+            document.addEventListener("click",function(e){
+            if(!forForm.contains(e.target)){
+                errPass[i].style.display="none"
+                errName[i].style.display="none"
+                errEmail[i].style.display="none"
+            }
+        })
         })
     }
     forForm.addEventListener("submit",function(e){

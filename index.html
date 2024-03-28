@@ -80,6 +80,14 @@
             else{
                 errPass[i].style.display="none"
             }
+
+            document.addEventListener("click",function(e){
+            if(!RegForm.contains(e.target)){
+                errPass[i].style.display="none"
+                errName[i].style.display="none"
+                errEmail[i].style.display="none"
+            }
+        })
         })
         RegForm.addEventListener("submit", function(e){
             e.preventDefault();
@@ -96,6 +104,7 @@
         })
         }
 
+        
     </script>
 </body>
 </html>
