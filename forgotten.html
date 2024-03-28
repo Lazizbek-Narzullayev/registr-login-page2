@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Change password</title>
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+            <h1 class="content-title">Change password</h1>
+            <form id="forgotten-form" class="form">
+                <div class="filed email">
+                    <div class="input-area">
+                        <input type="email" placeholder="Email Address" id="email">
+                        <i class="icon fas fa-envelope"></i>
+                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                    </div>
+                    <p class="error-email">Email can't be blank</p>
+                </div>
+                <div class="filed name">
+                    <div class="input-area">
+                        <input type="text" placeholder="Name" id="name">
+                        <i class="icon fas fa-user"></i>
+                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                    </div>
+                    <p class="error-name">Email can't be blank</p>
+                </div>
+                <div class="filed name">
+                    <div class="input-area">
+                        <input type="password" placeholder="New password" id="password">
+                        <i class="icon fas fa-lock"></i>
+                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                    </div>
+                    <p class="error-pass">Email can't be blank</p>
+                    <div class="show">
+                        <p class="show-pass">show password</p>
+                        <input type="checkbox" id="show-input">
+                    </div>
+                </div>
+                <input type="submit" value="changed✅">
+            </form>
+            <div class="sign-txt">Did you register? <a href="login.html">Login page</a></div>
+        </div>
+    </div>
+    <script>
+        const forForm = document.querySelector('#forgotten-form')
+        const email = document.querySelector('#email')
+        const userName = document.querySelector('#name')
+        const pass = document.querySelector('#password')
+        const errEmail = document.querySelectorAll('.error-email')
+        const errName = document.querySelectorAll('.error-name')
+        const errPass = document.querySelectorAll('.error-pass')
+        const showInput = document.querySelector('#show-input')
+
+        for(let i=0; i<errEmail.length; i++){
+            forForm.addEventListener("submit",function(e){
+            e.preventDefault();
+            if(email.value==""){
+                errEmail[i].style.display="block"
+            }
+            else{
+                errEmail[i].style.display="none"
+            }
+
+            if(userName.value==""){
+                errName[i].style.display="block"
+            }
+            else{
+                errName[i].style.display="none"
+            }
+
+            if(pass.value==""){
+                errPass[i].style.display="block"
+            }
+            else{
+                errPass[i].style.display="none"
+            }
+        })
+    }
+    forForm.addEventListener("submit",function(e){
+            e.preventDefault();
+            
+            if(localStorage.getItem("localEmail")===email.value &&
+                localStorage.getItem("localName")===userName.value&&
+                pass.value.length>0){
+                localStorage.removeItem("localPass")
+                localStorage.setItem("localPass",pass.value)
+                alert("password changed✅")
+                window.location.href="login.html"
+            }
+            else{
+                alert("Login error!!!")
+            }
+        })
+        showInput.addEventListener("click", function(){
+            (showInput.checked)?pass.type="text"  : pass.type="password"
+        })
+
+    </script>
+</body>
+</html>
